@@ -1,0 +1,18 @@
+PyTorch 2.14.0+cpu | 设备: cpu | 线程数: 14
+语料 2163 字符 | 词表大小 V = 699
+模型参数量: 502,656 | 配置: n_layer=2 n_head=4 n_embd=128 block=128 pos=有
+step     1/1000 | loss 6.5627 | 17.54 it/s | 预计剩余 57s
+step   100/1000 | loss 1.4693 | 22.14 it/s | 预计剩余 41s
+step   200/1000 | loss 0.1524 | 20.74 it/s | 预计剩余 39s
+step   300/1000 | loss 0.0766 | 21.31 it/s | 预计剩余 33s
+step   400/1000 | loss 0.0725 | 21.66 it/s | 预计剩余 28s
+step   500/1000 | loss 0.0441 | 22.14 it/s | 预计剩余 23s
+step   600/1000 | loss 0.0460 | 21.76 it/s | 预计剩余 18s
+step   700/1000 | loss 0.0438 | 21.91 it/s | 预计剩余 14s
+step   800/1000 | loss 0.0300 | 21.81 it/s | 预计剩余 9s
+step   900/1000 | loss 0.0293 | 21.87 it/s | 预计剩余 5s
+step  1000/1000 | loss 0.0245 | 21.75 it/s | 预计剩余 0s
+训练完成，耗时 46.0 秒 = 0.77 分钟 | 初始 loss 6.5627 | 最终 loss 0.0245 | 前 100 步均值 3.6146
+已保存权重 base.pt
+已保存 loss_curve_basemodel.png
+已保存 generated_basemodel.txt
