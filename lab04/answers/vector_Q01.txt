@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2676.78it/s]
+[embed] 已加载 paraphrase-multilingual-MiniLM-L12-v2
+
+[Q01·multi] 《大模型通识课》授课教师所在学院的行政负责人是谁？
+检索到的文档： ['doc04', 'doc06', 'doc05', 'doc07', 'doc11']
+
+回答： 资料中未提及《大模型通识课》授课教师所在学院的行政负责人。（资料中未提及）

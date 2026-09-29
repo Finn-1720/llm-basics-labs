@@ -1,0 +1,17 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2963.31it/s]
+[embed] 已加载 paraphrase-multilingual-MiniLM-L12-v2
+[graph] 实体45个/ 三元组40条/ 社区10个
+
+===== 检索评测（文档级，Top-2）=====
+范式          问题类型       Recall@2     MRR  完整命中
+Vector RAG    fact          1.000   1.000  7/7
+Vector RAG    multi         0.690   0.929  3/7
+Vector RAG    global        0.694   1.000  3/6
+GraphRAG      fact          0.714   0.714  5/7
+GraphRAG      multi         0.619   0.857  2/7
+GraphRAG      global        0.222   0.333  1/6
+WikiRAG       fact          0.714   0.571  5/7
+WikiRAG       multi         0.643   1.000  3/7
+WikiRAG       global        0.361   0.583  1/6
+
+提示：把本表抄进报告表3；另抽 3 题手算 MRR，用 --mrr_check 复核（式 8-10）。

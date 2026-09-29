@@ -1,0 +1,8 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3049.15it/s]
+[embed] 已加载 paraphrase-multilingual-MiniLM-L12-v2
+[graph] 实体45个/ 三元组40条/ 社区10个
+
+[Q06·fact] 云山大学的校训是什么？
+检索到的文档： ['doc01']
+
+回答： 云山大学的校训是「格物致知」。（doc01）

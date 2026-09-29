@@ -1,0 +1,81 @@
+题号   类型     范式       首个命中排名  Recall  检索到的文档
+Q01  multi  Vector        1   0.667  ['doc04', 'doc06', 'doc05', 'doc07', 'doc11']
+Q01  multi  Graph         2   1.000  ['doc11', 'doc06', 'doc02', 'doc04', 'doc10']
+Q01  multi  Wiki          1   1.000  ['doc04', 'doc11', 'doc06', 'doc02', 'doc10']
+
+Q02  multi  Vector        2   1.000  ['doc07', 'doc06', 'doc04', 'doc11', 'doc15']
+Q02  multi  Graph         1   1.000  ['doc11', 'doc06', 'doc02', 'doc04', 'doc10']
+Q02  multi  Wiki          1   0.667  ['doc06', 'doc07', 'doc08', 'doc11', 'doc13']
+
+Q03  multi  Vector        1   1.000  ['doc10', 'doc02', 'doc01', 'doc04', 'doc03']
+Q03  multi  Graph         1   1.000  ['doc10', 'doc02', 'doc04', 'doc11', 'doc06']
+Q03  multi  Wiki          1   1.000  ['doc02', 'doc10', 'doc15', 'doc01', 'doc12']
+
+Q04  multi  Vector        1   1.000  ['doc04', 'doc07', 'doc06', 'doc05', 'doc08']
+Q04  multi  Graph         2   1.000  ['doc08', 'doc07', 'doc04', 'doc02', 'doc10']
+Q04  multi  Wiki          1   1.000  ['doc04', 'doc11', 'doc07', 'doc08', 'doc06']
+
+Q05  multi  Vector        1   1.000  ['doc11', 'doc04', 'doc02', 'doc07', 'doc05']
+Q05  multi  Graph         1   1.000  ['doc11', 'doc02', 'doc04', 'doc10']
+Q05  multi  Wiki          1   1.000  ['doc04', 'doc11', 'doc13', 'doc06']
+
+Q06  fact   Vector        1   1.000  ['doc01', 'doc06', 'doc15', 'doc07', 'doc04']
+Q06  fact   Graph         1   1.000  ['doc01']
+Q06  fact   Wiki          1   1.000  ['doc01', 'doc12', 'doc14', 'doc06', 'doc04']
+
+Q07  fact   Vector        1   1.000  ['doc09', 'doc01', 'doc15', 'doc08', 'doc11']
+Q07  fact   Graph         1   1.000  ['doc09']
+Q07  fact   Wiki          1   1.000  ['doc09', 'doc01', 'doc12', 'doc14', 'doc02']
+
+Q08  fact   Vector        1   1.000  ['doc13', 'doc12', 'doc05', 'doc06', 'doc11']
+Q08  fact   Graph         1   1.000  ['doc13']
+Q08  fact   Wiki          2   1.000  ['doc11', 'doc13', 'doc01', 'doc12', 'doc14']
+
+Q09  fact   Vector        1   1.000  ['doc02', 'doc07', 'doc10', 'doc04', 'doc11']
+Q09  fact   Graph         1   1.000  ['doc02', 'doc04', 'doc11', 'doc10', 'doc07']
+Q09  fact   Wiki          1   1.000  ['doc02', 'doc10', 'doc15', 'doc06', 'doc07']
+
+Q10  fact   Vector        1   1.000  ['doc12', 'doc06', 'doc07', 'doc08', 'doc11']
+Q10  fact   Graph         1   1.000  ['doc12', 'doc06', 'doc04', 'doc11']
+Q10  fact   Wiki          2   1.000  ['doc01', 'doc12', 'doc14', 'doc06', 'doc11']
+
+Q11  global Vector        1   0.667  ['doc10', 'doc05', 'doc15', 'doc01', 'doc03']
+Q11  global Graph         1   1.000  ['doc02', 'doc03', 'doc10', 'doc15', 'doc04']
+Q11  global Wiki          2   1.000  ['doc05', 'doc03', 'doc10', 'doc02', 'doc15']
+
+Q12  global Vector        1   1.000  ['doc09', 'doc15', 'doc06', 'doc11', 'doc08']
+Q12  global Graph         1   1.000  ['doc09', 'doc11', 'doc13', 'doc02', 'doc04']
+Q12  global Wiki          1   1.000  ['doc09', 'doc06', 'doc01', 'doc12', 'doc14']
+
+Q13  global Vector        1   1.000  ['doc04', 'doc02', 'doc07', 'doc10', 'doc11']
+Q13  global Graph         2   1.000  ['doc02', 'doc04', 'doc06', 'doc07', 'doc08']
+Q13  global Wiki          0   0.000  ['doc02', 'doc10', 'doc15', 'doc11', 'doc13']
+
+Q14  global Vector        1   1.000  ['doc08', 'doc06', 'doc05', 'doc15', 'doc07']
+Q14  global Graph         5   1.000  ['doc02', 'doc04', 'doc06', 'doc07', 'doc08']
+Q14  global Wiki          3   1.000  ['doc06', 'doc07', 'doc08', 'doc04', 'doc11']
+
+Q15  global Vector        1   1.000  ['doc06', 'doc04', 'doc08', 'doc07', 'doc11']
+Q15  global Graph         3   0.500  ['doc02', 'doc04', 'doc06', 'doc07', 'doc08']
+Q15  global Wiki          1   1.000  ['doc06', 'doc04', 'doc11', 'doc07', 'doc08']
+
+Q16  fact   Vector        1   1.000  ['doc14', 'doc05', 'doc15', 'doc12', 'doc06']
+Q16  fact   Graph         0   0.000  ['doc02', 'doc04', 'doc06', 'doc07', 'doc08']
+Q16  fact   Wiki          3   1.000  ['doc01', 'doc12', 'doc14', 'doc05', 'doc07']
+
+Q17  fact   Vector        1   1.000  ['doc15', 'doc10', 'doc04', 'doc11', 'doc07']
+Q17  fact   Graph         0   0.000  ['doc02', 'doc11', 'doc04', 'doc10', 'doc06']
+Q17  fact   Wiki          3   1.000  ['doc02', 'doc10', 'doc15', 'doc06', 'doc11']
+
+Q18  multi  Vector        1   1.000  ['doc04', 'doc05', 'doc02', 'doc07', 'doc06']
+Q18  multi  Graph         1   1.000  ['doc02', 'doc08', 'doc04', 'doc07', 'doc10']
+Q18  multi  Wiki          1   0.667  ['doc04', 'doc11', 'doc02', 'doc10', 'doc15']
+
+Q19  multi  Vector        1   1.000  ['doc10', 'doc05', 'doc03', 'doc02', 'doc04']
+Q19  multi  Graph         1   1.000  ['doc03', 'doc10', 'doc05']
+Q19  multi  Wiki          1   1.000  ['doc03', 'doc10', 'doc05', 'doc02', 'doc15']
+
+Q20  global Vector        1   0.667  ['doc01', 'doc15', 'doc10', 'doc03', 'doc05']
+Q20  global Graph         3   0.333  ['doc02', 'doc03', 'doc10', 'doc15', 'doc09']
+Q20  global Wiki          1   0.667  ['doc01', 'doc12', 'doc14', 'doc03', 'doc10']
+

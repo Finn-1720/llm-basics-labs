@@ -1,0 +1,4 @@
+usage: hw4_rag.py [-h] [--mode {eval,vector,graph,wiki,extract}] [--q Q]
+                  [--scope {local,global}] [--k K] [--emb EMB]
+                  [--mrr_check MRR_CHECK] [--trace] [--local-llm]
+hw4_rag.py: error: argument --mode: invalid choice: 'mrr_check' (choose from eval, vector, graph, wiki, extract)

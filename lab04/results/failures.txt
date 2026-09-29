@@ -1,0 +1,12 @@
+=== 有失败的题目（Recall<1）===
+Q01 [multi] Vector: Recall=0.667 首次命中排名=1  漏掉=['doc02']
+Q02 [multi] Wiki: Recall=0.667 首次命中排名=1  漏掉=['doc04']
+Q11 [global] Vector: Recall=0.667 首次命中排名=1  漏掉=['doc02']
+Q13 [global] Wiki: Recall=0.000 首次命中排名=0  漏掉=['doc04']
+Q15 [global] Graph: Recall=0.500 首次命中排名=3  漏掉=['doc11']
+Q16 [fact] Graph: Recall=0.000 首次命中排名=0  漏掉=['doc14']
+Q17 [fact] Graph: Recall=0.000 首次命中排名=0  漏掉=['doc15']
+Q18 [multi] Wiki: Recall=0.667 首次命中排名=1  漏掉=['doc07']
+Q20 [global] Vector: Recall=0.667 首次命中排名=1  漏掉=['doc13']
+Q20 [global] Graph: Recall=0.333 首次命中排名=3  漏掉=['doc01', 'doc13']
+Q20 [global] Wiki: Recall=0.667 首次命中排名=1  漏掉=['doc13']

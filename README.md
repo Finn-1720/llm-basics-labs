@@ -9,6 +9,7 @@
 | [lab01](lab01/) | 实验作业一：使用 TRAE IDE 设计更好的神经网络（PyTorch 手写数字分类，控制变量对照实验） |
 | [lab02](lab02/) | 实验作业二：ConvLSTM 的算法应用与改进（弹跳小球时空序列预测，控制变量对照实验） |
 | [lab03](lab03/) | 实验作业三：手搓最小 LLM（字符级 GPT，唐诗语料，CPU 基线 + GPU 对比 + 5 组控制变量对照 + 采样分析） |
+| [lab04](lab04/) | 实验作业四：Vector RAG / GraphRAG / WikiRAG 对比实验（K 敏感性扫描 + MRR 手算复核 + 本地 Qwen3-14B 生成） |
 
 ## 实验一概要
 
@@ -39,3 +40,13 @@
 - GPU（RTX 5060 Ti, sm_120）对比：快 9.4×，loss 曲线前 200 步与 CPU 逐步一致
 
 详见 [lab03/README.md](lab03/README.md)。
+
+## 实验四概要
+
+在「云山大学」语料库（15 篇文档 + 20 道标注问题）上实现并对比三种 RAG 范式：
+
+- Vector RAG（分块 + 向量检索）/ GraphRAG（三元组 + 实体图谱检索）/ WikiRAG（条目库检索）
+- 指标：Recall@5、MRR、忠实度；K=1/2/3/5 敏感性扫描
+- 自拟 5 道题（Q16–Q20）+ `--trace` 检索中间量调试 + Qwen3-14B 本地生成
+
+详见 [lab04/README.md](lab04/README.md)。

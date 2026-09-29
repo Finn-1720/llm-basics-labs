@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3301.82it/s]
+[embed] 已加载 paraphrase-multilingual-MiniLM-L12-v2
+
+[Q01·multi] 《大模型通识课》授课教师所在学院的行政负责人是谁？
+检索到的文档： ['doc04', 'doc11', 'doc06', 'doc02', 'doc10']
+
+回答： 人工智能学院的行政负责人是王启明教授。（doc02）
