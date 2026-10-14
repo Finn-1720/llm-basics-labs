@@ -1,0 +1,10 @@
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+W1013 21:47:08.363000 105188 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:   0%|          | 2/471 [00:00<00:27, 16.77it/s]Loading weights:   6%|▋         | 30/471 [00:00<00:02, 159.63it/s]Loading weights:  26%|██▌       | 122/471 [00:00<00:00, 488.90it/s]Loading weights:  42%|████▏     | 196/471 [00:00<00:00, 583.88it/s]Loading weights:  55%|█████▍    | 257/471 [00:00<00:00, 592.38it/s]Loading weights:  74%|███████▍  | 349/471 [00:00<00:00, 696.04it/s]Loading weights:  92%|█████████▏| 433/471 [00:00<00:00, 738.25it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 606.42it/s]
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+D:\claude\llm-lab\venv\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+trainable params: 681,984 || all params: 257,166,912 || trainable%: 0.2652
+[sft] ep1 step10/15 loss=7.5356
+[sft] ep2 step10/15 loss=2.1472
+[sft] 适配器已保存到 ./sft_adapter

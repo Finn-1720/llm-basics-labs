@@ -1,0 +1,59 @@
+W1013 21:57:26.085000 88600 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:  41%|████▏     | 195/471 [00:00<00:00, 1931.82it/s]Loading weights:  83%|████████▎ | 389/471 [00:00<00:00, 1672.01it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 1688.57it/s]
+
+===== 基线 =====
+[P01·count] × gold=2    | 1
+[P02·count] × gold=3    | 1
+[P03·count] √ gold=2    | 2
+[P04·count] × gold=4    | 1
+[P05·count] × gold=3    | 1
+[P06·attr] × gold=方形   | 0
+[P07·attr] × gold=圆形   | 形状是白色的。
+[P08·attr] × gold=方形   | 载身。
+[P09·attr] × gold=圆形   | 其中，黄色的图形是黄色的图
+[P10·attr] × gold=方形   | 形状是小圆形。
+[P11·exist] × gold=有    | No.
+[P12·exist] × gold=没有   | No.
+[P13·exist] × gold=有    | No.
+[P14·exist] × gold=没有   | No.
+[P15·exist] × gold=没有   | No
+--- 基线 总计 1/15 ---
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:  39%|███▊      | 182/471 [00:00<00:00, 1796.61it/s]Loading weights:  77%|███████▋  | 362/471 [00:00<00:00, 1661.67it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 1582.70it/s]
+
+===== SFT =====
+[P01·count] × gold=2    | 1.
+[P02·count] × gold=3    | 1.
+[P03·count] √ gold=2    | 2.
+[P04·count] √ gold=4    | 1. 2. 3. 4. 5. 6. 7. 8.
+[P05·count] × gold=3    | 1.
+[P06·attr] × gold=方形   | 其中，图形中的右下角有一个小石。
+[P07·attr] × gold=圆形   | 2D.
+[P08·attr] × gold=方形   | 半身。
+[P09·attr] × gold=圆形   | Green.
+[P10·attr] × gold=方形   | 在图中，图形的顶部有三个，其中�
+[P11·exist] × gold=有    | No.
+[P12·exist] × gold=没有   | No.
+[P13·exist] × gold=有    | No.
+[P14·exist] × gold=没有   | No.
+[P15·exist] × gold=没有   | No.
+--- SFT 总计 2/15 ---
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:  37%|███▋      | 173/471 [00:00<00:00, 1709.29it/s]Loading weights:  73%|███████▎  | 344/471 [00:00<00:00, 1642.08it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 1587.05it/s]
+
+===== SFT+DPO =====
+[P01·count] × gold=2    | 1.
+[P02·count] × gold=3    | 1.
+[P03·count] √ gold=2    | 2.
+[P04·count] × gold=4    | 1.
+[P05·count] × gold=3    | 1.
+[P06·attr] × gold=方形   | 其中，图形中的右下角有一个小石。
+[P07·attr] × gold=圆形   | 2D.
+[P08·attr] × gold=方形   | 半身。
+[P09·attr] × gold=圆形   | Green.
+[P10·attr] × gold=方形   | 图形是塑料。
+[P11·exist] × gold=有    | No.
+[P12·exist] × gold=没有   | No.
+[P13·exist] × gold=有    | No.
+[P14·exist] × gold=没有   | No.
+[P15·exist] × gold=没有   | No.
+--- SFT+DPO 总计 1/15 ---

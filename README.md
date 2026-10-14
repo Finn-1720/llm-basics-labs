@@ -10,6 +10,7 @@
 | [lab02](lab02/) | 实验作业二：ConvLSTM 的算法应用与改进（弹跳小球时空序列预测，控制变量对照实验） |
 | [lab03](lab03/) | 实验作业三：手搓最小 LLM（字符级 GPT，唐诗语料，CPU 基线 + GPU 对比 + 5 组控制变量对照 + 采样分析） |
 | [lab04](lab04/) | 实验作业四：Vector RAG / GraphRAG / WikiRAG 对比实验（K 敏感性扫描 + MRR 手算复核 + 本地 Qwen3-14B 生成） |
+| [lab05](lab05/) | 实验作业五：SmolVLM-256M QLoRA 微调与 DPO 偏好对齐（GPU 实测 + β/r 敏感性扫描 + DPO 手算复核） |
 
 ## 实验一概要
 
@@ -50,3 +51,13 @@
 - 自拟 5 道题（Q16–Q20）+ `--trace` 检索中间量调试 + Qwen3-14B 本地生成
 
 详见 [lab04/README.md](lab04/README.md)。
+
+## 实验五概要
+
+在 SmolVLM-256M 视觉语言模型上完成 QLoRA 高效微调与 DPO 偏好对齐：
+
+- 三阶段对比（基线 / SFT / SFT+DPO）× 15 题评测，可训练参数仅 0.53%
+- DPO loss 手算复核（修正指南符号错误）+ β 与秩 r 敏感性扫描
+- transformers v5 适配（AutoModelForImageTextToText、dtype=）+ ModelScope 本地模型
+
+详见 [lab05/README.md](lab05/README.md)。

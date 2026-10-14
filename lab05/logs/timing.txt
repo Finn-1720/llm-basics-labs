@@ -1,0 +1,5 @@
+TIMING load 6 秒
+TIMING infer 16 秒
+TIMING sft 64 秒
+TIMING dpo 97 秒
+TIMING eval 37 秒
