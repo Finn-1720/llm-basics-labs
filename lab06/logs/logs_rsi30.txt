@@ -1,0 +1,59 @@
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:  40%|████      | 190/471 [00:00<00:00, 1863.58it/s]Loading weights:  80%|████████  | 377/471 [00:00<00:00, 1724.52it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 1711.67it/s]
+W1022 08:59:02.645000 27780 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+trainable params: 1,363,968 || all params: 257,848,896 || trainable%: 0.5290
+[sft] 种子数据15 条（定位答案由GT 框换算）→sft_data.json
+[rsi] 初始数据池15 条，开始2 轮递归自进化
+
+===== RSI 第1 轮=====
+[rsi] 轮1：VLM 答对4/15，自查改写0 次，验证器纠错7 次，新增可用样本0 条
+[rsi] 轮1：定位平均IoU = 0.000
+[sft] step5/30 loss=1.4153
+[sft] step10/30 loss=8.4171
+[sft] step15/30 loss=8.0516
+[sft] step20/30 loss=0.7278
+[sft] step25/30 loss=5.1807
+[sft] step30/30 loss=3.8503
+[sft] 适配器已保存到./sft_adapter（本轮训练样本15 条）
+
+===== RSI 轮1 × 15 题=====
+[L01] √ A: 第1行第2列第3列第4列。  gold: 第1行第2列IoU=0.18
+[L02] × A: 第1行第2列第3列第4列。  gold: 第1行第1列IoU=0.00
+[L03] × A: 第1行第2列第3列第4列。  gold: 第4行第2列IoU=0.00
+[L04] × A: 第1行第2列第3列第4列。  gold: 第2行第2列IoU=0.14
+[L05] √ A: 第1行第2列第3列。  gold: 第1行第2列IoU=0.16
+[L06] × A: 第1行第2行第3行  gold: 第4行第1列IoU=0.00
+[L07] × A: 第1行第2列第3列第4列。  gold: 第2行第4列IoU=0.00
+[L08] × A: 第1行第2列第3列第4列。  gold: 第4行第4列IoU=0.00
+RSI 轮1        loc    正确2/8
+RSI 轮1        count  正确4/4
+RSI 轮1        exist  正确0/3
+RSI 轮1        总计  正确6/15
+
+
+===== RSI 第2 轮=====
+[rsi] 轮2：VLM 答对6/15，自查改写0 次，验证器纠错6 次，新增可用样本0 条
+[rsi] 轮2：定位平均IoU = 0.059
+[sft] step5/30 loss=0.3423
+[sft] step10/30 loss=2.3821
+[sft] step15/30 loss=1.9666
+[sft] step20/30 loss=0.2608
+[sft] step25/30 loss=0.7185
+[sft] step30/30 loss=0.3038
+[sft] 适配器已保存到./sft_adapter（本轮训练样本15 条）
+
+===== RSI 轮2 × 15 题=====
+[L01] √ A: 第1行第2列第3列第4列。  gold: 第1行第2列IoU=0.18
+[L02] × A: 第1行第2列第3列第4列。  gold: 第1行第1列IoU=0.00
+[L03] × A: 第1行第2列第3列第4列第5列第6列  gold: 第4行第2列IoU=0.00
+[L04] × A: 第1行第2列第3列第4列。  gold: 第2行第2列IoU=0.14
+[L05] √ A: 第1行第2列第3列第4列。  gold: 第1行第2列IoU=0.16
+[L06] × A: 第1行第2列第3列。  gold: 第4行第1列IoU=0.00
+[L07] × A: 第1行第2列第3列第4列。  gold: 第2行第4列IoU=0.00
+[L08] × A: 第1行第2列第3列第4列。  gold: 第4行第4列IoU=0.00
+RSI 轮2        loc    正确2/8
+RSI 轮2        count  正确4/4
+RSI 轮2        exist  正确3/3
+RSI 轮2        总计  正确9/15
+
+[rsi] 记忆写入rsi_memory.json（30 条）；数据池最终15 条

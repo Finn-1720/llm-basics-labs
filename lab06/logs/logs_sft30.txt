@@ -1,0 +1,11 @@
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:  40%|███▉      | 187/471 [00:00<00:00, 1868.94it/s]Loading weights:  79%|███████▉  | 374/471 [00:00<00:00, 1694.54it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 1687.21it/s]
+W1022 08:55:23.672000 14392 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+trainable params: 1,363,968 || all params: 257,848,896 || trainable%: 0.5290
+[sft] step5/30 loss=1.4119
+[sft] step10/30 loss=8.4232
+[sft] step15/30 loss=7.9773
+[sft] step20/30 loss=0.7212
+[sft] step25/30 loss=5.1187
+[sft] step30/30 loss=3.8483
+[sft] 适配器已保存到./sft_adapter（本轮训练样本15 条）

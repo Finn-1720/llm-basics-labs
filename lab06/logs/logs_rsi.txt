@@ -1,0 +1,52 @@
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights:   0%|          | 0/471 [00:00<?, ?it/s]Loading weights:  42%|████▏     | 199/471 [00:00<00:00, 1959.78it/s]Loading weights:  84%|████████▍ | 395/471 [00:00<00:00, 1727.19it/s]Loading weights: 100%|██████████| 471/471 [00:00<00:00, 1740.48it/s]
+W1022 08:57:19.935000 8072 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+trainable params: 1,363,968 || all params: 257,848,896 || trainable%: 0.5290
+[sft] 种子数据15 条（定位答案由GT 框换算）→sft_data.json
+[rsi] 初始数据池15 条，开始2 轮递归自进化
+
+===== RSI 第1 轮=====
+[rsi] 轮1：VLM 答对4/15，自查改写0 次，验证器纠错7 次，新增可用样本0 条
+[rsi] 轮1：定位平均IoU = 0.000
+[sft] step5/10 loss=1.4224
+[sft] step10/10 loss=8.4410
+[sft] 适配器已保存到./sft_adapter（本轮训练样本15 条）
+
+===== RSI 轮1 × 15 题=====
+[L01] × A: 1. 1. 2. 3. 4. 5. 6. 7.  gold: 第1行第2列IoU=0.00
+[L02] × A: 1. 1. 2. 3. 4. 5. 6. 7.  gold: 第1行第1列IoU=0.00
+[L03] × A: 蓝色圆形位于第几行第几列  gold: 第4行第2列IoU=0.00
+[L04] × A: 1.0.  gold: 第2行第2列IoU=0.00
+[L05] × A: 1. 在第几行第几列？
+第1行�  gold: 第1行第2列IoU=0.00
+[L06] × A: 1.  gold: 第4行第1列IoU=0.00
+[L07] × A: 1. 1. 2. 3. 4. 5. 6. 7.  gold: 第2行第4列IoU=0.00
+[L08] × A: 1. 0.  gold: 第4行第4列IoU=0.00
+RSI 轮1        loc    正确0/8
+RSI 轮1        count  正确4/4
+RSI 轮1        exist  正确0/3
+RSI 轮1        总计  正确4/15
+
+
+===== RSI 第2 轮=====
+[rsi] 轮2：VLM 答对4/15，自查改写0 次，验证器纠错7 次，新增可用样本0 条
+[rsi] 轮2：定位平均IoU = 0.000
+[sft] step5/10 loss=0.7437
+[sft] step10/10 loss=6.2930
+[sft] 适配器已保存到./sft_adapter（本轮训练样本15 条）
+
+===== RSI 轮2 × 15 题=====
+[L01] √ A: 第1行第2列第3列。  gold: 第1行第2列IoU=0.18
+[L02] × A: 第1行第2列第3列。  gold: 第1行第1列IoU=0.00
+[L03] × A: 第1行第2列第3列。  gold: 第4行第2列IoU=0.00
+[L04] × A: 第1行第2列第3列。  gold: 第2行第2列IoU=0.14
+[L05] √ A: 第1行第2列。  gold: 第1行第2列IoU=0.16
+[L06] × A: 第1行第2列  gold: 第4行第1列IoU=0.00
+[L07] × A: 第1行第2列第3列。  gold: 第2行第4列IoU=0.00
+[L08] × A: 第1行第2列。  gold: 第4行第4列IoU=0.00
+RSI 轮2        loc    正确2/8
+RSI 轮2        count  正确4/4
+RSI 轮2        exist  正确0/3
+RSI 轮2        总计  正确6/15
+
+[rsi] 记忆写入rsi_memory.json（30 条）；数据池最终15 条

@@ -1,0 +1,1 @@
+[sft] 种子数据15 条（定位答案由GT 框换算）→sft_data.json
