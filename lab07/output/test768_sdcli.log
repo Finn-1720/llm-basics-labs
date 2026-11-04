@@ -1,0 +1,114 @@
+[V] version: stable-diffusion.cpp version master-1047-984eb06, commit 984eb06 --- main.cpp:694
+[V] System Info: 
+   NEON = 1 |    ARM_FMA = 1 |    FP16_VA = 1 |    MATMUL_INT8 = 1 |    DOTPROD = 1 |    SME = 1 |    SME2 = 1 |    ACCELERATE = 1 |    REPACK = 1 |  --- main.cpp:695
+[V] using 4 threads for model loading --- model_loader.cpp:194
+[I] loading model from '/Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf' --- diffusion_engine.cpp:685
+[I] load /Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf using gguf format --- model_loader.cpp:220
+[V] init from '/Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf' --- model_loader.cpp:266
+[V] GGUF v3, tensor_count=1229, metadata_kv_count=0 --- gguf_reader_ext.h:225
+[I] load /Users/laiyuxuan/Desktop/大模型基础/lab07/models/control_depth_sd21-fp16.gguf using gguf format --- model_loader.cpp:220
+[V] init from '/Users/laiyuxuan/Desktop/大模型基础/lab07/models/control_depth_sd21-fp16.gguf' --- model_loader.cpp:266
+[V] GGUF v3, tensor_count=340, metadata_kv_count=0 --- gguf_reader_ext.h:225
+[I] Version: SD 2.x  --- diffusion_engine.cpp:975
+[W] auto-fit: no GPU devices; using the default backend --- backend_fit.cpp:455
+[V] Found 2 backend devices: --- ggml_extend_backend.cpp:706
+[V] #0: BLAS --- ggml_extend_backend.cpp:709
+[V] #1: CPU --- ggml_extend_backend.cpp:709
+[V] Initializing backend: CPU --- ggml_extend_backend.cpp:420
+[V] Using CPU backend --- ggml_extend_backend.cpp:751
+[V] using 4 threads for model loading --- model_loader.cpp:194
+[I] Weight type stat:                      f32: 544  |     f16: 480  |    q4_0: 545   --- diffusion_engine.cpp:1548
+[I] Conditioner weight type stat:          f32: 123  |     f16: 1    |    q4_0: 170   --- diffusion_engine.cpp:1549
+[I] Diffusion model weight type stat:      f32: 297  |     f16: 66   |    q4_0: 323   --- diffusion_engine.cpp:1550
+[I] VAE weight type stat:                  f32: 124  |     f16: 72   |    q4_0: 52    --- diffusion_engine.cpp:1551
+[V] unet: in_channels = 4, out_channels = 4, model_channels = 320, time_embed_dim = 1280, context_dim = 1024, adm_in_channels = 2816, num_res_blocks = 2, tiny_unet = false --- unet.hpp:140
+[I] using VAE for encoding / decoding --- model_builders.cpp:210
+[I] vae decoder: ch = 128 --- auto_encoder_kl.hpp:529
+[I] flash attention auto: CPU -> on (CPU) --- flash_attn.cpp:66
+[I] conv2d direct auto: CPU -> off (no implicit GEMM path) --- conv_direct.cpp:90
+[I] conv3d direct auto: CPU -> off (no implicit GEMM path) --- conv_direct.cpp:90
+[V] validating model metadata --- diffusion_engine.cpp:1307
+[V] model metadata validated; weights will be prepared lazily --- diffusion_engine.cpp:1377
+[I] total params memory size = 2457.52MB (VRAM 0.00MB, RAM 2457.52MB): text_encoders 356.53MB(RAM), diffusion_model 1246.21MB(RAM), vae 159.68MB(RAM), controlnet 695.10MB(RAM), extensions 0.00MB(N/A) --- diffusion_engine.cpp:1438
+[I] unet build cached graph cut plan done (taking 2 ms) --- ggml_graph_cut.cpp:1034
+[V] loading 686/1229 tensors from /Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf --- model_loader.cpp:1159
+
+  |#####                                             |  64/686 - 175.22MB/s[K
+  |##################                                | 236/686 - 527.11MB/s[K
+  |#######################                           | 304/686 - 635.65MB/s[K
+  |########################                          | 322/686 - 622.61MB/s[K
+  |###############################                   | 418/686 - 665.13MB/s[K
+  |##################################                | 466/686 - 695.21MB/s[K
+  |######################################            | 518/686 - 677.71MB/s[K
+  |##################################################| 686/686 - 757.84MB/s[K
+[I] loading tensors completed, taking 1.64s (read: 1.64s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.00s) --- model_loader.cpp:1431
+[V] model manager prepared params backend buffers (1246.21 MB, 686 tensors, 1 blocks, RAM) on CPU --- model_manager.cpp:496
+[V] unet compute buffer size: 1.93 MB(RAM) on CPU (peak across 1 segment) --- ggml_runner.cpp:1068
+[V] check is_using_v_parameterization_for_sd2, taking 1.71s --- diffusion_engine.cpp:1617
+[I] running in eps-prediction mode --- diffusion_engine.cpp:1467
+[I] preprocess control[0]: 768x768 crop=(0,0,768,768) resize=768x768 pad=(0,0) output=768x768 filter=auto(0) antialias=false --- image_preprocess.cpp:304
+[I] generate_image 768x768 --- image.cpp:869
+[V] using 4 threads for model loading --- model_loader.cpp:194
+[I] get_sigmas with discrete scheduler --- denoiser.hpp:1129
+[I] sampling using Euler A method --- request.cpp:477
+[I] vae build cached graph cut plan done (taking 0 ms) --- ggml_graph_cut.cpp:1034
+[V] loading 108/1229 tensors from /Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf --- model_loader.cpp:1159
+
+  |##################################################| 108/108 - 316.45MB/s[K
+[I] loading tensors completed, taking 0.21s (read: 0.08s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.00s) --- model_loader.cpp:1431
+[V] model manager prepared params backend buffers ( 65.22 MB, 108 tensors, 1 blocks, RAM) on CPU --- model_manager.cpp:496
+[V] vae compute buffer size: 1909.13 MB(RAM) on CPU (peak across 1 segment) --- ggml_runner.cpp:1068
+[V] computing vae encode graph completed, taking 15.53s --- vae.hpp:310
+[V] parse 'photorealistic render, studio soft lighting, PBR material, preserve original 3d geometry, sharp' to [['photorealistic render, studio soft lighting, PBR material, preserve original 3d geometry, sharp', 1], ] --- conditioner.hpp:407
+[V] split prompt "photorealistic render, studio soft lighting, PBR material, preserve original 3d geometry, sharp" to 18 tokens ["photo", "realistic</w>", "render</w>", ",</w>", "studio</w>", "soft</w>", "lighting</w>", ",</w>", "pbr</w>", "material</w>", ",</w>", "preserve</w>", "original</w>", "3</w>", "d</w>", "geometry</w>", ",</w>", "sharp</w>", ] --- bpe_tokenizer.cpp:245
+[I] clip build cached graph cut plan done (taking 1 ms) --- ggml_graph_cut.cpp:1034
+[V] loading 280/1229 tensors from /Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf --- model_loader.cpp:1159
+
+  |################################                  | 174/280 - 447.21MB/s[K
+  |##################################################| 280/280 - 860.44MB/s[K
+[I] loading tensors completed, taking 0.41s (read: 0.36s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.00s) --- model_loader.cpp:1431
+[V] model manager prepared params backend buffers (349.73 MB, 280 tensors, 1 blocks, RAM) on CPU --- model_manager.cpp:496
+[V] clip compute buffer size: 2.43 MB(RAM) on CPU (peak across 1 segment) --- ggml_runner.cpp:1068
+[V] computing condition graph completed, taking 583 ms --- conditioner.hpp:526
+[V] parse 'deformed geometry, perspective changed' to [['deformed geometry, perspective changed', 1], ] --- conditioner.hpp:407
+[V] split prompt "deformed geometry, perspective changed" to 6 tokens ["de", "formed</w>", "geometry</w>", ",</w>", "perspective</w>", "changed</w>", ] --- bpe_tokenizer.cpp:245
+[V] computing condition graph completed, taking 185 ms --- conditioner.hpp:526
+[I] get_learned_condition completed, taking 0.77s --- image.cpp:580
+[I] generating image: 1/1 - seed 42 --- image.cpp:920
+[I] control_net build cached graph cut plan done (taking 0 ms) --- ggml_graph_cut.cpp:1034
+[V] loading 340/340 tensors from /Users/laiyuxuan/Desktop/大模型基础/lab07/models/control_depth_sd21-fp16.gguf --- model_loader.cpp:1159
+
+  |###################                               | 128/340 - 740.30MB/s[K
+  |################################                  | 216/340 - 639.74MB/s[K
+  |#########################################         | 274/340 - 706.84MB/s[K
+  |##############################################    | 312/340 - 719.28MB/s[K
+  |##################################################| 340/340 - 679.09MB/s[K
+[I] loading tensors completed, taking 1.02s (read: 0.89s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.00s) --- model_loader.cpp:1431
+[V] model manager prepared params backend buffers (695.10 MB, 340 tensors, 1 blocks, RAM) on CPU --- model_manager.cpp:496
+[V] control_net compute buffer size: 271.57 MB(RAM) on CPU (peak across 1 segment) --- ggml_runner.cpp:1068
+[I] control_net build cached graph cut plan done (taking 0 ms) --- ggml_graph_cut.cpp:1034
+[I] unet build cached graph cut plan done (taking 2 ms) --- ggml_graph_cut.cpp:1034
+[V] unet compute buffer size: 556.21 MB(RAM) on CPU (peak across 1 segment) --- ggml_runner.cpp:1068
+
+  |============>                                     | 1/4 -  27.87s/it - ETA 01:23[K
+  |=========================>                        | 2/4 -  26.80s/it - ETA 00:54[K
+  |=====================================>            | 3/4 -  27.07s/it - ETA 00:27[K
+  |==================================================| 4/4 -  27.08s/it[K
+[I] sampling completed, taking 108.83s --- image.cpp:953
+[I] generating 1 latent images completed, taking 108.83s --- image.cpp:967
+[I] decoding 1 latents --- image.cpp:605
+[I] vae build cached graph cut plan done (taking 0 ms) --- ggml_graph_cut.cpp:1034
+[V] loading 140/1229 tensors from /Users/laiyuxuan/Desktop/大模型基础/lab07/models/sd_turbo_q4_0.gguf --- model_loader.cpp:1159
+
+  |##################################################| 140/140 - 458.39MB/s[K
+[I] loading tensors completed, taking 0.21s (read: 0.14s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.00s) --- model_loader.cpp:1431
+[V] model manager prepared params backend buffers ( 94.47 MB, 140 tensors, 1 blocks, RAM) on CPU --- model_manager.cpp:496
+[V] vae compute buffer size: 3744.14 MB(RAM) on CPU (peak across 1 segment) --- ggml_runner.cpp:1068
+[V] computing vae decode graph completed, taking 37.32s --- vae.hpp:384
+[I] latent 1 decoded, taking 37.32s --- image.cpp:671
+[I] decode_first_stage completed, taking 37.32s --- image.cpp:675
+[I] generate_image completed in 162.58s --- image.cpp:1140
+[V] model manager released params backend buffers (2450.72 MB, 1554 tensors, 5 blocks, RAM) from CPU --- model_manager.cpp:1301
+[I] save result image 0 to '/Users/laiyuxuan/Desktop/大模型基础/lab07/output/test768_photoreal.png' (success) --- main.cpp:495
+[I] 1/1 images saved --- main.cpp:571
+

@@ -12,6 +12,7 @@
 | [lab04](lab04/) | 实验作业四：Vector RAG / GraphRAG / WikiRAG 对比实验（K 敏感性扫描 + MRR 手算复核 + 本地 Qwen3-14B 生成） |
 | [lab05](lab05/) | 实验作业五：SmolVLM-256M QLoRA 微调与 DPO 偏好对齐（GPU 实测 + β/r 敏感性扫描 + DPO 手算复核） |
 | [lab06](lab06/) | 实验作业六：SmolVLM-256M 精准定位的 RSI 递归自进化（网格坐标定位 + 验证器纠错闭环 + GRID=8 拓展） |
+| [lab07](lab07/) | 实验作业七：白膜转写实纯 CPU 深度控制流水线（Blender 深度图 + SD-Turbo ControlNet，GGUF 模型见 Releases） |
 
 ## 实验一概要
 
@@ -72,3 +73,14 @@
 - 记录三个设计问题：训练图未使用、count 题无区分度、10 步不足一个 epoch
 
 详见 [lab06/README.md](lab06/README.md)。
+
+## 实验七概要
+
+Blender 白模场景 → Mist 深度图/法线图 → stable-diffusion.cpp（自编译纯 CPU）SD-Turbo Q4_0 + SD2.1 depth ControlNet 生成写实图：
+
+- 512²/4 步 106.2s，768²/4 步 164.5s（M4 纯 CPU），每步耗时 ≈ k×像素数规律验证
+- 几何一致性：clay 与 photoreal 边缘重合率 40%~53%
+- Blender 5.2 API 适配（合成器大改）+ Metal 崩溃转纯 CPU + 首次 768² 异常耗时定位
+- 模型文件（2.45GB）发布在 [Releases](https://github.com/Finn-1720/llm-basics-labs/releases)
+
+详见 [lab07/README.md](lab07/README.md)。
