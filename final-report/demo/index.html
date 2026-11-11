@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CPU Compression Stack — Demo</title>
+<style>
+  :root{
+    --ink:#1f2d3a; --muted:#5b6b7a; --line:#d7dee6; --bg:#fbfcfd;
+    --blue:#4a6b8a; --green:#5f8a6b; --amber:#b08d57; --red:#a05a5a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e8eef4; --muted:#9fb0c0; --line:#2b3a48; --bg:#131a21;
+           --blue:#7fa5c8; --green:#8fc0a0; --amber:#d4b483; --red:#d08f8f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"Times New Roman",Georgia,serif;line-height:1.55}
+  .wrap{max-width:980px;margin:0 auto;padding:40px 24px 72px}
+  h1{font-size:26px;font-weight:700;margin:0 0 6px;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:32px}
+  h2{font-size:17px;font-weight:700;margin:38px 0 10px;
+     padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:14px 0}
+  .card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:transparent}
+  .card .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+  .card .v{font-size:22px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+  .card .n{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .card.up .v{color:var(--green)}
+  .card.down .v{color:var(--red)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0 4px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-weight:700;color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .controls{display:flex;gap:28px;flex-wrap:wrap;margin:14px 0 8px}
+  .ctl{flex:1;min-width:240px}
+  .ctl label{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px}
+  .ctl b{font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;accent-color:var(--blue)}
+  .readout{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:10px}
+  .readout .big{font-size:34px;font-weight:700;font-variant-numeric:tabular-nums}
+  .readout .cap{font-size:13px;color:var(--muted)}
+  .badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;
+         border:1px solid var(--line);color:var(--muted);margin-left:8px}
+  .bars{margin-top:8px}
+  .bar{display:grid;grid-template-columns:150px 1fr 78px;align-items:center;gap:10px;margin:9px 0;font-size:13.5px}
+  .track{height:16px;border-radius:4px;background:var(--line);overflow:hidden}
+  .fill{height:100%;border-radius:4px}
+  .note{font-size:13px;color:var(--muted);margin-top:6px}
+  footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);
+         font-size:12.5px;color:var(--muted)}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>CPU-Budget Compression Stack</h1>
+  <div class="sub">Interactive demonstration · character-level LM distillation, INT8 quantization and 4-bit diffusion deployment<br>
+  Lai Yuxuan · 2025311489 · Harbin Institute of Technology, Shenzhen</div>
+
+  <h2>1 · Model comparison (held-out split)</h2>
+  <div class="cards">
+    <div class="card"><div class="k">Teacher</div><div class="v">0.9078</div><div class="n">737,600 params · CE</div></div>
+    <div class="card"><div class="k">Student · scratch</div><div class="v">1.4144</div><div class="n">147,584 params · CE</div></div>
+    <div class="card up"><div class="k">Student · distilled</div><div class="v">1.3216</div><div class="n">−6.6 % vs scratch</div></div>
+    <div class="card"><div class="k">INT8 size</div><div class="v">0.175 MB</div><div class="n">3.62× smaller · ΔCE +0.0002</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Model</th><th class="num">Params</th><th class="num">Val CE ↓</th><th class="num">PPL ↓</th><th class="num">Agreement ↑</th><th class="num">Train time</th></tr></thead>
+    <tbody>
+      <tr><td>Teacher</td><td class="num">737,600</td><td class="num">0.9078</td><td class="num">2.48</td><td class="num">—</td><td class="num">5.7 s</td></tr>
+      <tr><td>Student (from scratch)</td><td class="num">147,584</td><td class="num">1.4144</td><td class="num">4.11</td><td class="num">0.644</td><td class="num">1.5 s</td></tr>
+      <tr><td>Student (distilled)</td><td class="num">147,584</td><td class="num">1.3216</td><td class="num">3.75</td><td class="num">0.707</td><td class="num">2.7 s</td></tr>
+      <tr><td>Student (distilled + INT8)</td><td class="num">147,584</td><td class="num">1.3218</td><td class="num">3.75</td><td class="num">0.707</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="note">All students use identical architecture, initialisation seed and 120 optimisation steps; only the objective differs.</div>
+
+  <h2>2 · Temperature–weight explorer (16-cell sweep, 80 steps)</h2>
+  <div class="controls">
+    <div class="ctl">
+      <label>Temperature T <b id="tVal">8</b></label>
+      <input id="T" type="range" min="0" max="3" step="1" value="3">
+    </div>
+    <div class="ctl">
+      <label>Imitation weight α <b id="aVal">0.30</b></label>
+      <input id="A" type="range" min="0" max="3" step="1" value="0">
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cap">Held-out cross-entropy at <code>T = <span id="tOut">8</span></code>, <code>α = <span id="aOut">0.30</span></code></div>
+    <div class="big" id="lossOut">1.5573</div>
+    <span class="badge" id="rankOut">best of 16</span>
+  </div>
+  <div class="bars" id="bars"></div>
+  <div class="note">The sweep reveals a coupling: at T = 1 soft labels collapse to one-hot and α has almost no effect; at T = 8 the imitation weight must be small, otherwise the KL term dominates and performance degrades below the scratch baseline.</div>
+
+  <h2>3 · Pure-CPU diffusion latency</h2>
+  <div class="bars">
+    <div class="bar"><span>512² · 4 steps</span><div class="track"><div class="fill" style="width:64.5%;background:var(--blue)"></div></div><span>106.2 s</span></div>
+    <div class="bar"><span>768² · 4 steps</span><div class="track"><div class="fill" style="width:100%;background:var(--amber)"></div></div><span>164.5 s</span></div>
+    <div class="bar"><span>VAE decode 512²</span><div class="track"><div class="fill" style="width:26.7%;background:var(--green)"></div></div><span>43.9 s</span></div>
+    <div class="bar"><span>VAE encode 512²</span><div class="track"><div class="fill" style="width:3.9%;background:var(--green)"></div></div><span>6.4 s</span></div>
+  </div>
+  <div class="note">Apple M4, 16 GB, GGML_METAL=OFF. Per-step cost scales with pixel count (≈5×10⁻⁵ s/pixel), while VAE decoding is a fixed second-order cost.</div>
+
+  <footer>
+    Data generated by <code>lab03</code>, <code>lab07</code> and <code>lab08</code> of
+    <code>github.com/Finn-1720/llm-basics-labs</code>. This page is fully offline and self-contained.
+  </footer>
+</div>
+
+<script>
+const T_OPTS=[1,2,4,8], A_OPTS=[0.3,0.5,0.7,0.9];
+const LOSS=[
+ [1.5826,1.5804,1.5815,1.5858],
+ [1.5810,1.5941,1.6203,1.6487],
+ [1.5588,1.5671,1.5914,1.6764],
+ [1.5573,1.5662,1.5924,1.7166]
+];
+const flat=LOSS.flat();
+const sorted=[...flat].sort((a,b)=>a-b);
+const T=document.getElementById('T'), A=document.getElementById('A');
+function render(){
+  const ti=+T.value, ai=+A.value, v=LOSS[ti][ai];
+  document.getElementById('tVal').textContent=T_OPTS[ti];
+  document.getElementById('tOut').textContent=T_OPTS[ti];
+  document.getElementById('aVal').textContent=A_OPTS[ai].toFixed(2);
+  document.getElementById('aOut').textContent=A_OPTS[ai].toFixed(2);
+  document.getElementById('lossOut').textContent=v.toFixed(4);
+  const rank=sorted.indexOf(v)+1;
+  const b=document.getElementById('rankOut');
+  b.textContent = rank===1 ? 'best of 16' : (rank===16 ? 'worst of 16' : 'rank '+rank+' of 16');
+  b.style.color = rank===1 ? 'var(--green)' : (rank>=14 ? 'var(--red)' : 'var(--muted)');
+  // bars: current row
+  const bars=document.getElementById('bars');
+  bars.innerHTML='';
+  A_OPTS.forEach((a,j)=>{
+    const val=LOSS[ti][j];
+    const pct=(val-1.52)/(1.75-1.52)*100;
+    const d=document.createElement('div'); d.className='bar';
+    const col = j===ai ? 'var(--blue)' : 'var(--line)';
+    d.innerHTML=`<span>α = ${a.toFixed(2)}</span>
+      <div class="track"><div class="fill" style="width:${Math.max(3,Math.min(100,pct))}%;background:${col}"></div></div>
+      <span>${val.toFixed(4)}</span>`;
+    bars.appendChild(d);
+  });
+}
+T.addEventListener('input',render); A.addEventListener('input',render); render();
+</script>
+</body>
+</html>

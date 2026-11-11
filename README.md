@@ -14,6 +14,7 @@
 | [lab06](lab06/) | 实验作业六：SmolVLM-256M 精准定位的 RSI 递归自进化（网格坐标定位 + 验证器纠错闭环 + GRID=8 拓展） |
 | [lab07](lab07/) | 实验作业七：白膜转写实纯 CPU 深度控制流水线（Blender 深度图 + SD-Turbo ControlNet，GGUF 模型见 Releases） |
 | [lab08](lab08/) | 实验作业八：自制语言模型知识蒸馏（教师 0.74M → 学生 0.15M，T×α 消融 + 特征蒸馏/热力图/动态量化） |
+| [final-report](final-report/) | **期末报告**：CPU 预算下的生成模型压缩与部署（蒸馏 + 量化 + 4-bit 扩散），含交互式演示系统 |
 
 ## 实验一概要
 
@@ -95,3 +96,14 @@ Blender 白模场景 → Mist 深度图/法线图 → stable-diffusion.cpp（自
 - 拓展 A 特征蒸馏（FitNet）、B 热力图、D 动态量化（体积 3.62×压缩，精度几乎无损）
 
 详见 [lab08/README.md](lab08/README.md)。
+
+## 期末报告概要
+
+将课程分散讲授的三种压缩手段放进同一条纯 CPU 流水线，测量它们的交互作用：
+
+- 蒸馏：0.74 M → 0.15 M 教师/学生，留出集 CE 1.4144 → 1.3216（−6.6%）
+- 量化：动态 INT8 压缩 3.62×，CE 变化 +0.0002；batch=1 反而变慢 1.8×
+- 部署：SD-Turbo Q4_0 + 深度 ControlNet，512²/4 步 106.2 s
+- 负结果：RSI 闭环未产出新样本；batch=1 量化不加速
+
+详见 [final-report/README.md](final-report/README.md)。
