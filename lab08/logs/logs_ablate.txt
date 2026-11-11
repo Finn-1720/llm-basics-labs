@@ -1,0 +1,23 @@
+[data] vocab=323  train_chars=52457  val_chars=5657  block=96  batch=24
+[teacher] params = 0.738 M
+[teacher] 复用 teacher.pt  val_loss=0.9078  ppl=2.48
+  T=1 alpha=0.3 -> val 1.5826
+  T=1 alpha=0.5 -> val 1.5804
+  T=1 alpha=0.7 -> val 1.5815
+  T=1 alpha=0.9 -> val 1.5858
+  T=2 alpha=0.3 -> val 1.5810
+  T=2 alpha=0.5 -> val 1.5941
+  T=2 alpha=0.7 -> val 1.6203
+  T=2 alpha=0.9 -> val 1.6487
+  T=4 alpha=0.3 -> val 1.5588
+  T=4 alpha=0.5 -> val 1.5671
+  T=4 alpha=0.7 -> val 1.5914
+  T=4 alpha=0.9 -> val 1.6764
+  T=8 alpha=0.3 -> val 1.5573
+  T=8 alpha=0.5 -> val 1.5662
+  T=8 alpha=0.7 -> val 1.5924
+  T=8 alpha=0.9 -> val 1.7166
+[ablate] 最优 T=8 alpha=0.3 val=1.5573 ｜最差 T=8 alpha=0.9 val=1.7166
+[plot] saved D:\claude\llm-lab\hw8_distill\runs_distill\curves.png
+
+[done] 结果已写入D:\claude\llm-lab\hw8_distill\runs_distill

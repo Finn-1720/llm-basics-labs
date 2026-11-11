@@ -1,0 +1,18 @@
+[data] vocab=323  train_chars=52457  val_chars=5657  block=96  batch=24
+[teacher] params = 0.738 M
+[teacher] 复用 teacher.pt  val_loss=0.9078  ppl=2.48
+[student] params = 0.148 M  (压缩率5.0x)
+  [scratch] iter    1/120  loss 5.7895  (0.1s)
+  [scratch] iter   50/120  loss 1.5536  (0.7s)
+  [scratch] iter  100/120  loss 1.1433  (1.3s)
+[scratch] val_loss=1.4144  ppl=4.11  agree=0.644  1.5s
+  [kd] iter    1/120  loss 5.5206  ce 5.7895  kd(T^2) 4.9263  (0.0s)
+  [kd] iter   50/120  loss 1.9403  ce 1.6509  kd(T^2) 2.0549  (2.0s)
+  [kd] iter  100/120  loss 1.1272  ce 1.1133  kd(T^2) 1.0245  (4.0s)
+[kd] val_loss=1.3154  ppl=3.73  agree=0.706  4.8s
+
+[对比] 从零1.4144  ->  蒸馏 1.3154   相对下降7.0%
+[generate] 月中孤 道：“疏星正好。”此意难平。少年 在溪桥暮云 了一夜忆，长叹一夜守，欲语还休。山寺恰遇 道：“残灯正好。”长亭细雨
+[plot] saved D:\claude\llm-lab\hw8_distill\runs_distill\curves.png
+
+[done] 结果与曲线已写入D:\claude\llm-lab\hw8_distill\runs_distill

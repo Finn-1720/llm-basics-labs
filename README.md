@@ -13,6 +13,7 @@
 | [lab05](lab05/) | 实验作业五：SmolVLM-256M QLoRA 微调与 DPO 偏好对齐（GPU 实测 + β/r 敏感性扫描 + DPO 手算复核） |
 | [lab06](lab06/) | 实验作业六：SmolVLM-256M 精准定位的 RSI 递归自进化（网格坐标定位 + 验证器纠错闭环 + GRID=8 拓展） |
 | [lab07](lab07/) | 实验作业七：白膜转写实纯 CPU 深度控制流水线（Blender 深度图 + SD-Turbo ControlNet，GGUF 模型见 Releases） |
+| [lab08](lab08/) | 实验作业八：自制语言模型知识蒸馏（教师 0.74M → 学生 0.15M，T×α 消融 + 特征蒸馏/热力图/动态量化） |
 
 ## 实验一概要
 
@@ -84,3 +85,13 @@ Blender 白模场景 → Mist 深度图/法线图 → stable-diffusion.cpp（自
 - 模型文件（2.45GB）发布在 [Releases](https://github.com/Finn-1720/llm-basics-labs/releases)
 
 详见 [lab07/README.md](lab07/README.md)。
+
+## 实验八概要
+
+纯 CPU 完成一次真实的字符级语言模型知识蒸馏（教师 0.74M 参数 → 学生 0.15M，压缩 5×）：
+
+- 留出集 loss：从零学生 1.4144 → 蒸馏学生 1.3216（−6.6%），PPL 4.11 → 3.75，与教师一致率 0.644 → 0.707
+- 16 组 T×α 消融：最优 T=8/α=0.3（1.5573），揭示「高温必须配小权重」的耦合规律
+- 拓展 A 特征蒸馏（FitNet）、B 热力图、D 动态量化（体积 3.62×压缩，精度几乎无损）
+
+详见 [lab08/README.md](lab08/README.md)。
